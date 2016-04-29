@@ -4,8 +4,9 @@ using SAPbouiCOM.Framework;
 
 namespace SBOAddonProject1
 {
-    class Program
+    public class Program
     {
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -23,10 +24,10 @@ namespace SBOAddonProject1
                 {
                     oApp = new Application(args[0]);
                 }
-                Menu MyMenu = new Menu();
-                MyMenu.AddMenuItems();
-                oApp.RegisterMenuEventHandler(MyMenu.SBO_Application_MenuEvent);
-                Application.SBO_Application.AppEvent += new SAPbouiCOM._IApplicationEvents_AppEventEventHandler(SBO_Application_AppEvent);
+
+                AppStart appStart = new AppStart();
+                appStart.Start(oApp);
+
                 oApp.Run();
             }
             catch (Exception ex)
@@ -34,27 +35,6 @@ namespace SBOAddonProject1
 
 
                 System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-        }
-
-        static void SBO_Application_AppEvent(SAPbouiCOM.BoAppEventTypes EventType)
-        {
-            switch (EventType)
-            {
-                case SAPbouiCOM.BoAppEventTypes.aet_ShutDown:
-                    //Exit Add-On
-                    System.Windows.Forms.Application.Exit();
-                    break;
-                case SAPbouiCOM.BoAppEventTypes.aet_CompanyChanged:
-                    break;
-                case SAPbouiCOM.BoAppEventTypes.aet_FontChanged:
-                    break;
-                case SAPbouiCOM.BoAppEventTypes.aet_LanguageChanged:
-                    break;
-                case SAPbouiCOM.BoAppEventTypes.aet_ServerTerminition:
-                    break;
-                default:
-                    break;
             }
         }
     }

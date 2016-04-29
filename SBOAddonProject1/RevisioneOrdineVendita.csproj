@@ -46,10 +46,13 @@
     <Reference Include="SAPBusinessOneSDK" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RevisioneForm.cs" />
     <None Include="Form1.b1f">
       <FormCategory>UserForm</FormCategory>
       <SubType>Designer</SubType>
     </None>
+    <Compile Include="AppStart.cs" />
+    <Compile Include="EventHandler.cs" />
     <Compile Include="Form1.b1f.cs">
       <DependentUpon>Form1.b1f</DependentUpon>
     </Compile>
